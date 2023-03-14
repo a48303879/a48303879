@@ -13,6 +13,7 @@ int main(int argc, char** argv) {
 解法:輸入英哩，程式自動x1.6並以一位浮點數輸出。
 
 題目3. 判斷座標是否在圓形的範圍內
+``` 
 #include <iostream>
 using namespace std;
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
@@ -26,9 +27,11 @@ int main(int argc, char** argv) {
 	cout<<"outside"<<endl;
 	return 0;
 }
+``` 
 解法:輸入座標，利用畢氏定理求出到圓心的距離，判斷是否在直徑200的圈裏面。
 
 題目4. 停車費計算
+``` 
 #include <iostream>
 using namespace std;
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
@@ -46,9 +49,11 @@ int main(int argc, char** argv) {
 	cout<<(time-240)/30*60+120+160<<endl;
 	return 0;
 }
+``` 
 解法；將小時化成分鐘，用if來判斷是否進到下一個層次，並算出停車費。
 
 題目5. 十進制轉二進制
+``` 
 #include <iostream>
 using namespace std;
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
@@ -68,9 +73,11 @@ int main(int argc, char** argv) {
 	cout<<endl; 
 	return 0;
 }
+``` 
 解法:將輸入的數字判斷正負數，以相應的方式求出二進制。
 
 題目6. 季節判定
+``` 
 #include <iostream>
 using namespace std;
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
@@ -90,4 +97,5 @@ int main(int argc, char** argv) {
 	} 
 	return 0;
 }
+``` 
 解法:輸入月份，除以3來判斷季節，若商為1則輸出Spring、2則輸出Summer、3則輸出Autumn、0或4則輸出Winter。
