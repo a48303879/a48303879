@@ -99,3 +99,258 @@ int main(int argc, char** argv) {
 }
 ``` 
 解法:輸入月份，除以3來判斷季節，若商為1則輸出Spring、2則輸出Summer、3則輸出Autumn、0或4則輸出Winter。
+
+題目7. 複數運算
+``` 
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num, real[2], img[2];
+    cin >> num;
+    for (int i = 0; i < num; i++) {
+        char symbol;
+        cin >> symbol >> real[0] >> img[0] >> real[1] >> img[1];
+        switch (symbol) {
+            case '+':
+                cout << real[0] + real[1] << " " << img[0] + img[1] << endl;
+                break;
+            case '-':
+                cout << real[0] - real[1] << " " << img[0] - img[1] << endl;
+                break;
+            case '*':
+                cout << real[0] * real[1] - img[0] * img[1] << " " << img[0] * real[1] + real[0] * img[1] << endl;
+                break;
+            case '/':
+                cout << (real[0] * real[1] + img[0] * img[1]) / (real[1] * real[1] + img[1] * img[1]) << " " << img[0] * real[1] - real[0] * img[1] / (real[1] * real[1] + img[1] * img[1]) << endl;
+                break;
+            default:
+                break;
+        }
+    }
+    return 0;
+}
+``` 
+解法:
+
+題目8. 質數判別
+``` 
+#include <iostream>  
+using namespace std;
+
+int main()
+{
+    int n, a, ans;
+    cin >> n;
+    ans = 1;
+    a = 2;
+    while (a < n)
+    {
+        if (n % a == 0)
+        {
+            ans = 0;
+        }
+        a++;
+    }
+    if (ans == 1)
+    {
+        cout << "YES" << endl;
+    }
+    else
+    {
+        cout << "NO" << endl;
+    }
+    return 0;
+}
+``` 
+解法:
+題目9. 計算正整數被3整除之數值之總和
+``` 
+#include <iostream>
+using namespace std;
+int main()
+{
+	int n;
+	int sum = 0;
+	cin >> n;
+	for (int i = 1; i <= n; i++) {
+		if (i % 3 == 0)sum += i;
+	}
+	cout << sum << endl;
+	return 0;
+}
+``` 
+解法:
+題目10. 輾轉相除法
+``` 
+#include <iostream>
+using namespace std;
+int gcd(int x, int y) {
+    int num = 1;
+    while (num != 0) {
+        num = x % y;
+        x = y;
+        y = num;
+    }
+    return x;
+}
+int main() {
+    int x, y;
+    cin >> x;
+    cin >> y;
+    cout << gcd(x, y) << endl;
+    return 0;
+}
+#include<iostream>
+using namespace std;
+
+int euc(int a,int b);
+int main()
+{
+	int input=0,input2=0,c=0;
+	
+	cin>>input>>input2;
+	if(input<input2)
+	{
+		c=input;
+		input=input2;
+		input2=c;
+	}
+	cout<<euc(input,input2)<<endl;
+	return 0;
+}
+int euc(int a,int b)
+{
+	int f=a%b;
+	if(f==0) return b;
+	else return euc(b,f);
+}
+``` 
+解法:
+題目11. 矩陣反轉
+``` 
+#include <iostream>
+using namespace std;
+
+int main() {
+    int row, column;
+    cin >> column >> row;
+    int data[10][10];
+    for (int i = 0; i < column; i++) {
+        for (int j = 0; j < row; j++) {
+            cin >> data[i][j];
+        }
+    }
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < column; j++) {
+            cout << data[j][i] << " ";
+        }
+        cout << "\b" << endl;
+    }
+    return 0;
+}
+``` 
+解法:
+題目12. 遞迴程式練習
+``` 
+#include <iostream>
+using namespace std;
+
+int funtion(int num) {
+	if ((num == 0) || (num == 1))
+		return num + 1;
+	else
+		return funtion(num - 1) + funtion(num / 2);
+}
+int main() {
+	int num;
+	cin >> num;
+	cout << funtion(num) << endl;
+	return 0;
+}
+``` 
+解法:
+題目13. 撲克牌大小
+``` 
+#include<iostream>
+#include<string>
+#include<sstream>
+#include<vector>
+using namespace std;
+
+void sortPoke (vector<string>& a,int n);
+int main()
+{
+	int input=0,n=0;
+	string Str,s;
+	vector<string> pokeS;
+
+	cin>>input;
+	cin.ignore(1,'\n');
+	for(int i=0;i<input;i++)
+	{
+		getline(cin,Str);
+		istringstream cutStr(Str);
+		while(getline(cutStr,s,' '))
+		{
+			pokeS.push_back(s);
+		}
+		sortPoke(pokeS,pokeS.size());
+		for(int j=0;j<pokeS.size();j++)
+		{
+			if(j==pokeS.size()-1) cout<<pokeS[j]<<endl;
+			else cout<<pokeS[j]<<" ";
+		}
+		pokeS.clear();
+	}
+	return 0;
+}
+void sortPoke (vector<string>& a,int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		for(int j=0;j<n;j++)
+		{
+			string t;
+			if(a[i][0]>a[j][0]){t=a[i];a[i]=a[j];a[j]=t;}
+		}
+	}
+	for(int i=0;i<n;i++)
+	{
+		for(int j=0+i;j<n;j++)
+		{
+			if(a[i][0]==a[j][0])
+            {
+                string t,bN=a[i].substr(1,2),sN=a[j].substr(1,2);
+                istringstream bigN(bN);
+                istringstream smaN(sN);
+                int b=0,s=0;
+                bigN>>b;smaN>>s;
+                if(b<s){t=a[i];a[i]=a[j];a[j]=t;}
+            }
+		}
+	}
+}
+``` 
+解法:
+題目14. 判斷是否為迴文
+``` 
+#include <iostream>
+using namespace std;
+
+int main() {
+	string input;
+	int len;
+	cin >> input;
+	len = input.length();
+	for (int i = 0; i < len / 2; i++) {
+		if (input[i] != input[len -1 - i]) {
+			cout << "NO" << endl;
+			return 0;
+		}
+	}
+	cout << "YES" << endl;
+	return 0;
+}
+``` 
+解法:
